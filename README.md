@@ -1,4 +1,4 @@
-# saurabhtodi.in
+# Saurabh Todi's Website
 
 Personal website for Saurabh Todi — Policy Analyst & Researcher.
 
@@ -9,20 +9,6 @@ Personal website for Saurabh Todi — Policy Analyst & Researcher.
 3. Go to **Settings → Pages** in your repository.
 4. Under **Source**, select **Deploy from a branch** → `main` → `/ (root)` → **Save**.
 5. Your site will be live at `https://<username>.github.io` within a few minutes.
-
-### Custom Domain (saurabhtodi.in)
-
-The `CNAME` file is already included and set to `saurabhtodi.in`. To connect it:
-
-1. In your domain registrar's DNS settings, add these records:
-   - **A records** (point to GitHub Pages IPs):
-     - `185.199.108.153`
-     - `185.199.109.153`
-     - `185.199.110.153`
-     - `185.199.111.153`
-   - **CNAME record**: `www` → `<username>.github.io`
-2. In GitHub repo **Settings → Pages → Custom domain**, enter `saurabhtodi.in` and save.
-3. Check **Enforce HTTPS** once the DNS propagates (usually 24-48 hours).
 
 ## How to Update Content
 
@@ -58,9 +44,8 @@ The favicon is fetched automatically from Google's favicon service.
 
 ```
 ├── index.html     ← Entire site (single file, no build step)
-├── CNAME          ← Custom domain config for GitHub Pages
-├── .nojekyll      ← Tells GitHub Pages not to use Jekyll
-└── README.md      ← This file
+├── README.md      ← This file
+└── saurabhtodi-github-pages.html ← Backup version
 ```
 
 ## Tech Stack
