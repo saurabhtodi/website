@@ -112,8 +112,8 @@
 
     /* HERO */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 8rem 3rem 4rem; position: relative;
+      min-height: 100vh; display: flex; align-items: flex-start;
+      padding: 8rem 3rem 6rem; position: relative;
       overflow: hidden;
     }
     .hero::before {
@@ -127,7 +127,7 @@
       height: 200px; background: linear-gradient(to top, var(--bg-primary), transparent);
       pointer-events: none;
     }
-    .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-content { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .hero-text { animation: fadeUp 1s ease forwards; }
     .hero-eyebrow {
       font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
@@ -395,7 +395,7 @@
     // DATA — Edit these arrays to add/remove publications
     // =====================
 
-    const SECTIONS = ["home", "about", "writing", "research", "contact"];
+    const SECTIONS = ["home", "writing", "research", "contact"];
 
     const OPINION_PIECES = [
       { date: "Feb 2026", outlet: "India's World", title: "SHANTI Act: Nuclear Ambitions Require Nuclear Urgency", url: "https://indiasworld.in/shanti-act-nuclear-ambitions-require-nuclear-urgency/", tier: "featured" },
@@ -537,7 +537,7 @@
               Saurabh<span>.</span>
             </button>
             <ul className="nav-links">
-              {[["about","About"],["writing","Writing"],["research","Research"],["contact","Contact"]].map(([id,label]) => (
+              {[["writing","Writing"],["research","Research"],["contact","Contact"]].map(([id,label]) => (
                 <li key={id}>
                   <a className={activeSection === id ? "active" : ""} onClick={() => scrollTo(id)}>{label}</a>
                 </li>
@@ -545,40 +545,34 @@
             </ul>
           </nav>
 
-          {/* HERO */}
-          <section className="hero" ref={(el) => (sectionRefs.current.home = el)}>
-            <div className="hero-content">
-              <div className="hero-text">
-                <div className="hero-eyebrow">Policy Analyst &amp; Researcher</div>
-                <h1 className="hero-name">Saurabh<br/><em>Todi</em></h1>
-                <p className="hero-subtitle">
-                  Researching the geopolitics of emerging technologies, especially nuclear energy and biotechnology.
-                </p>
-              </div>
-              <div className="hero-image-wrap">
-                <div className="hero-image-container">
-                  <img className="hero-image" src="./images/profile.jpg" alt="Saurabh Todi" />
+          {/* HERO + ABOUT */}
+          <section className="hero" ref={(el) => { sectionRefs.current.home = el; sectionRefs.current.about = el; }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+              <div className="hero-content">
+                <div className="hero-text">
+                  <div className="hero-eyebrow">Policy Analyst &amp; Researcher</div>
+                  <h1 className="hero-name">Saurabh<br/><em>Todi</em></h1>
+                  <p className="hero-subtitle">
+                    Researching the geopolitics of emerging technologies, especially nuclear energy and biotechnology.
+                  </p>
+                </div>
+                <div className="hero-image-wrap">
+                  <div className="hero-image-container">
+                    <img className="hero-image" src="./images/profile.jpg" alt="Saurabh Todi" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* ABOUT */}
-          <section className="section" ref={(el) => (sectionRefs.current.about = el)}>
-            <div className="section-header"><div>
-              <div className="section-label">Background</div>
-              <h2 className="section-title">About</h2>
-            </div></div>
-            <div className="about-grid">
-              <div className="about-text">
-                <p><strong>Saurabh Todi</strong> is a policy analyst focused on the geopolitics of new and emerging technologies, with deep focus on <strong>nuclear technology</strong> and <strong>biotechnology</strong>.</p>
-                <p>He is currently associated with the <strong>Takshashila Institution</strong> in Bengaluru. Previously, he served as a Research Assistant at the <strong>Centre for Nonproliferation Studies (CNS)</strong> in Monterey and interned at the <strong>International Atomic Energy Agency (IAEA)</strong> in Vienna.</p>
-                <p>His analysis has been published in <strong>Nature</strong>, <strong>Nikkei Asia</strong>, <strong>Bulletin of The Atomic Scientists</strong>, <strong>The Indian Express</strong>, <strong>The Hindu</strong>, and <strong>Le Grand Continent</strong>, among others — and featured in outlets including <strong>Hindustan Times</strong> and <strong>Times of India</strong>.</p>
-              </div>
-              <div>
-                <div className="about-sidebar-title" style={{color: "var(--flagship)"}}>Education</div>
-                <div className="about-sidebar-item">M.A. Nonproliferation &amp; Terrorism Studies<span>Middlebury Institute of International Studies at Monterey</span></div>
-                <div className="about-sidebar-item">B.S. Biological Sciences<span>University of California, Davis</span></div>
+              <div className="about-grid" style={{ marginTop: '4rem', paddingTop: '3rem', borderTop: '1px solid var(--border)' }}>
+                <div className="about-text">
+                  <p><strong>Saurabh Todi</strong> is a policy analyst focused on the geopolitics of new and emerging technologies, with deep focus on <strong>nuclear technology</strong> and <strong>biotechnology</strong>.</p>
+                  <p>He is currently associated with the <strong>Takshashila Institution</strong> in Bengaluru. Previously, he served as a Research Assistant at the <strong>Centre for Nonproliferation Studies (CNS)</strong> in Monterey and interned at the <strong>International Atomic Energy Agency (IAEA)</strong> in Vienna.</p>
+                  <p>His analysis has been published in <strong>Nature</strong>, <strong>Nikkei Asia</strong>, <strong>Bulletin of The Atomic Scientists</strong>, <strong>The Indian Express</strong>, <strong>The Hindu</strong>, and <strong>Le Grand Continent</strong>, among others — and featured in outlets including <strong>Hindustan Times</strong> and <strong>Times of India</strong>.</p>
+                </div>
+                <div>
+                  <div className="about-sidebar-title" style={{color: "var(--flagship)"}}>Education</div>
+                  <div className="about-sidebar-item">M.A. Nonproliferation &amp; Terrorism Studies<span>Middlebury Institute of International Studies at Monterey</span></div>
+                  <div className="about-sidebar-item">B.S. Biological Sciences<span>University of California, Davis</span></div>
+                </div>
               </div>
             </div>
           </section>
