@@ -122,8 +122,8 @@
       background: radial-gradient(ellipse at 80% 30%, rgba(107,127,78,0.05) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hero-content { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .hero-text { animation: fadeUp 1s ease forwards; }
+    .hero-content { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .hero-text { animation: fadeUp 1s ease forwards; grid-column: 1; grid-row: 1 / span 2; align-self: center; }
     .hero-eyebrow {
       font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
       letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem;
@@ -140,8 +140,14 @@
       font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;
       max-width: 500px; font-weight: 300;
     }
-    .hero-image-wrap {
+    .hero-image-only {
       display: flex; justify-content: flex-end; align-items: center;
+      animation: fadeIn 1.2s ease 0.3s forwards; opacity: 0;
+      grid-column: 2; grid-row: 1;
+    }
+    .hero-education {
+      grid-column: 2; grid-row: 2;
+      width: 340px; margin-left: auto;
       animation: fadeIn 1.2s ease 0.3s forwards; opacity: 0;
     }
     .hero-image-container { position: relative; width: 340px; height: 420px; }
@@ -352,9 +358,11 @@
       .nav-links { gap: 1.5rem; }
       .nav-links a { font-size: 0.7rem; }
       .hero { padding: 7rem 1.5rem 3rem; }
-      .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-image-wrap { justify-content: center; order: -1; }
+      .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-text { grid-column: 1; grid-row: 2; align-self: auto; }
+      .hero-image-only { grid-column: 1; grid-row: 1; justify-content: center; }
       .hero-image-container { width: 220px; height: 280px; }
+      .hero-education { grid-column: 1; grid-row: 3; width: 100%; margin-left: 0; }
       .hero-stats { gap: 2rem; }
       .section { padding: 4rem 1.5rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -553,15 +561,15 @@
                     <p>His analysis has been published in <strong>Nature</strong>, <strong>Nikkei Asia</strong>, <strong>Bulletin of The Atomic Scientists</strong>, <strong>The Indian Express</strong>, <strong>The Hindu</strong>, and <strong>Le Grand Continent</strong>, among others — and featured in outlets including <strong>Hindustan Times</strong> and <strong>Times of India</strong>.</p>
                   </div>
                 </div>
-                <div className="hero-image-wrap" style={{ flexDirection: 'column', alignItems: 'flex-end', gap: '2rem' }}>
+                <div className="hero-image-only">
                   <div className="hero-image-container">
                     <img className="hero-image" src="./images/profile.jpg" alt="Saurabh Todi" />
                   </div>
-                  <div style={{ width: '340px' }}>
-                    <div className="about-sidebar-title" style={{color: "var(--flagship)"}}>Education</div>
-                    <div className="about-sidebar-item">M.A. Nonproliferation &amp; Terrorism Studies<span>Middlebury Institute of International Studies at Monterey</span></div>
-                    <div className="about-sidebar-item">B.S. Biological Sciences<span>University of California, Davis</span></div>
-                  </div>
+                </div>
+                <div className="hero-education">
+                  <div className="about-sidebar-title" style={{color: "var(--flagship)"}}>Education</div>
+                  <div className="about-sidebar-item">M.A. Nonproliferation &amp; Terrorism Studies<span>Middlebury Institute of International Studies at Monterey</span></div>
+                  <div className="about-sidebar-item">B.S. Biological Sciences<span>University of California, Davis</span></div>
                 </div>
               </div>
             </div>
